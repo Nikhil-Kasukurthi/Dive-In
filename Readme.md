@@ -7,6 +7,7 @@ We are using Wikipedia API to fetch possible articles based on a search query an
 ```
     /search
  ```
+      Method: POST
       Parameters:
             text (string): The search query for Wikipedia
       Returns:
@@ -32,6 +33,7 @@ We are using Wikipedia API to fetch possible articles based on a search query an
 ```
  /searchImage
 ```
+      Method: POST
       Parameters:
             text (string): The search query for Wikipedia
       Returns:
