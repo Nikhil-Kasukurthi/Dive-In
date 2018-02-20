@@ -76,7 +76,8 @@ We are using Wikipedia API to fetch possible articles based on a search query an
                         ... (clipped)
                     ]
                 }
-                
+
+### Summary
 ```
 /summary
 ````
