@@ -3,22 +3,32 @@ import tornado.web
 import wikipedia as wiki
 import json
 
+
 class TextSearchHandler(tornado.web.RequestHandler):
+    """
+        Route for getting a list of possible Wikipedia articles.
+    """
+
     def post(self):
-    	extracted_text = self.get_argument('text')
+        extracted_text = self.get_argument('text')
         possible_articles = wiki.search(extracted_text)
         results = {}
         results['possible_articles'] = possible_articles
         self.write(json.dumps(results))
 
+
 class TextSearchImagesHandler(tornado.web.RequestHandler):
+    """
+        Route for getting list of possible Wikipedia articles
+        along with images of each article. 
+    """
     def post(self):
         extracted_text = self.get_argument('text')
         possible_articles = wiki.search(extracted_text)
         results = {}
         results['possible_articles'] = []
         for article_id in possible_articles:
-            if len(article_id)>20:
+            if len(article_id) > 20:
                 continue
             result = {}
             article = wiki.page(article_id)
@@ -29,7 +39,11 @@ class TextSearchImagesHandler(tornado.web.RequestHandler):
             results['possible_articles'].append(result)
         self.write(json.dumps(results))
 
+
 class SummaryHandler(tornado.web.RequestHandler):
+    """
+        Route for getting summary of requested article.
+    """
     def post(self):
         article_id = self.get_argument('article_id')
         article = wiki.page(article_id)
@@ -37,6 +51,7 @@ class SummaryHandler(tornado.web.RequestHandler):
         results = {}
         results['Results'] = summary
         self.write(json.dumps(results))
+
 
 def make_app():
     return tornado.web.Application([
