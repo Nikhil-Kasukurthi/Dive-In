@@ -1,0 +1,31 @@
+local app = require('waffle')
+
+app.get('/object', function(req, res)
+	local text = req.url.args.text
+	res.send('{"Answer":"This a test"}')
+	end
+)
+
+app.get('/question', function(req, res)
+	local question = req.url.args.question
+	local paragraph = req.url.args.paragraph
+	-- res.send('Hello World!')
+	res.send('{"Answer":"This a test"}')
+	end
+)
+
+app.get('/questionGenerated', function(req, res)
+   local paragraph = req.url.args.paragraph
+   res.send('{"questions":[\
+   			{\
+   			"question":"Test1",\
+   			"answer":"Answer1"\
+   		},{\
+   			"question":"Test2",\
+   			"answer":"Answer2"\
+   		}\
+   	]}')
+	end
+)
+
+app.listen()
