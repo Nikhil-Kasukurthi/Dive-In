@@ -1,8 +1,9 @@
 import tornado.ioloop
 import tornado.web
-import wikipedia as wiki
 import json
+from wikiapi import WikiApi
 
+wiki = WikiApi()
 
 class TextSearchHandler(tornado.web.RequestHandler):
     """
@@ -11,9 +12,9 @@ class TextSearchHandler(tornado.web.RequestHandler):
 
     def post(self):
         extracted_text = self.get_argument('text')
-        possible_articles = wiki.search(extracted_text)
+        possible_articles = wiki.find(extracted_text)
         results = {}
-        results['possible_articles'] = possible_articles
+        results['Possible Articles'] = possible_articles
         self.write(json.dumps(results))
 
 
@@ -24,19 +25,19 @@ class TextSearchImagesHandler(tornado.web.RequestHandler):
     """
     def post(self):
         extracted_text = self.get_argument('text')
-        possible_articles = wiki.search(extracted_text)
+        possible_articles = wiki.find(extracted_text)
         results = {}
-        results['possible_articles'] = []
+        results['Possible Articles'] = []
         for article_id in possible_articles:
             if len(article_id) > 20:
                 continue
             result = {}
-            article = wiki.page(article_id)
-            image_array = article.images
+            article = wiki.get_article(article_id)
+            #image_array = article.images
             result["article_id"] = article_id
-            result["images"] = image_array
+            result["image"] = article.image
             print(result)
-            results['possible_articles'].append(result)
+            results['Possible Articles'].append(result)
         self.write(json.dumps(results))
 
 
