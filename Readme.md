@@ -42,46 +42,20 @@ We are using Wikipedia API to fetch possible articles based on a search query an
        Request: 
              text = Maitreya
        Response:
-               {
-                  "Possible Articles": [
-                      {
-                          "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/59/KushanMaitreya.JPG/240px-KushanMaitreya.JPG",
-                          "article_id": "Maitreya"
-                      },
-                      {
-                          "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Theosophie.jpg/150px-Theosophie.jpg",
-                          "article_id": "Maitreya_(Theosophy)"
-                      },
-                      {
-                          "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/2/29/A_havan_ceremony_on_the_banks_of_Ganges%2C_Muni_ki_Reti%2C_Rishikesh.jpg/250px-A_havan_ceremony_on_the_banks_of_Ganges%2C_Muni_ki_Reti%2C_Rishikesh.jpg",
-                          "article_id": "Maitreya_Upanishad"
-                      },
-                      {
-                          "image": "http://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Maigtreya_Project_Promotional_Poster.jpg/220px-Maigtreya_Project_Promotional_Poster.jpg",
-                          "article_id": "Maitreya_Project"
-                      },
-                      {
-                          "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Asanga.JPG/170px-Asanga.JPG",
-                          "article_id": "Maitreya-n%C4%81tha"
-                      },
-                      {
-                          "image": "http:None",
-                          "article_id": "Maitreya_Festival"
-                      },
-                      {
-                          "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Chinese_lu_symbol_-_%E7%A6%84.svg/75px-Chinese_lu_symbol_-_%E7%A6%84.svg.png",
-                          "article_id": "Maitreya_teachings"
-                      },
-                      {
-                          "image": "http://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Si_cover_2008small.jpg/170px-Si_cover_2008small.jpg",
-                          "article_id": "Share_International"
-                      },
-                      {
-                          "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/7/77/BENJAMIN_CREME_2006.jpg/220px-BENJAMIN_CREME_2006.jpg",
-                          "article_id": "Benjamin_Creme"
-                      }
-                  ]
-             }
+              {
+    "Possible Articles": [
+                     {
+                         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/5/59/KushanMaitreya.JPG/240px-KushanMaitreya.JPG",
+                         "article_id": "Maitreya",
+                         "summary": "— Events —Maitreya (Sanskrit), Metteyya (Pali), is regarded as a future Buddha of this world in Buddhist eschatology. In some Buddhist literature, such as the Amitabha Sutra and the Lotus Sutra, he is referred to as Ajita.According to Buddhist tradition, Maitreya is a bodhisattva who will appear on Earth in the future, achieve complete enlightenment, and teach the pure dharma. According to scriptures, Maitreya will be a successor to the present Buddha, Gautama Buddha (also known as Śākyamuni Buddha). ... (clipped)
+                     },
+                     {
+                         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Theosophie.jpg/150px-Theosophie.jpg",
+                         "article_id": "Maitreya_(Theosophy)",
+                         "summary": "Traditional and Christian Theosophy contributorsRelated topicsTheosophistsTheosophical philosophical conceptsTheosophical organizationsTheosophical ... (clipped)
+                     }, ... (clipped)
+    ]
+}
 
 ### Summary
 ```
