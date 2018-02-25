@@ -36,6 +36,7 @@ class TextSearchImagesHandler(tornado.web.RequestHandler):
             #image_array = article.images
             result["article_id"] = article_id
             result["image"] = article.image
+            result["summary"] = article.summary
             print(result)
             results['Possible Articles'].append(result)
         self.write(json.dumps(results))
