@@ -74,3 +74,14 @@ We are using Wikipedia API to fetch possible articles based on a search query an
             "Results": "Maitreya (Sanskrit), Metteyya (Pali), is regarded as a future Buddha of this world in Buddhist eschatology. In some Buddhist literature, ... (clipped)
         }
 
+### Upload
+This API is for extracting text from image. 
+
+```
+\upload
+```
+    Method: POST
+         Parameters:
+               file (file): The image to extract text from
+         Returns:
+               Results: The text and the related bounding boxes. 
