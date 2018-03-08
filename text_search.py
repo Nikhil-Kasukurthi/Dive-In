@@ -2,6 +2,21 @@ import tornado.ioloop
 import tornado.web
 import json
 from wikiapi import WikiApi
+# Google Cloud vision API
+import io
+import os
+
+# Imports the Google Cloud client library
+from google.cloud import vision
+from google.cloud.vision import types
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+import base64
+
+client = vision.ImageAnnotatorClient()
 
 wiki = WikiApi()
 
@@ -54,12 +69,36 @@ class SummaryHandler(tornado.web.RequestHandler):
         results['Results'] = summary
         self.write(json.dumps(results))
 
+class UploadHandler(tornado.web.RequestHandler):
+
+    def post(self):
+        file = self.request.files['file'][0]
+        content = file['body']
+        image = types.Image(content=content)     
+
+        response = client.text_detection(image=image)
+        texts = response.text_annotations
+        
+        JSON = {}
+        JSON['results'] = []
+        for text in texts:
+            resultJSON = {}
+            resultJSON['description'] = text.description
+        	# print('\n"{}"'.format(text.description))
+            vertices = (['({},{})'.format(vertex.x, vertex.y)
+		                for vertex in text.bounding_poly.vertices])
+        	# print('bounds: {}'.format(','.join(vertices)))
+            resultJSON['bounds'] = vertices
+            JSON['results'].append(resultJSON)
+        
+        self.write(JSON)
 
 def make_app():
     return tornado.web.Application([
         (r"/search", TextSearchHandler),
         (r"/searchImage", TextSearchImagesHandler),
-        (r"/summary", SummaryHandler)
+        (r"/summary", SummaryHandler),
+        (r"/upload", UploadHandler)
     ])
 
 if __name__ == "__main__":
